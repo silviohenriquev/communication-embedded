@@ -27,6 +27,7 @@ public:
 		//LoRaE220Communication(byte txE220pin, byte rxE220pin, HardwareSerial* serial, byte auxPin, byte m0Pin, byte m1Pin, DeviceFunction function);
 		LoRaE220Communication(HardwareSerial *serial,byte auxPin, byte m0Pin, byte m1Pin, DeviceFunction function);
     #endif
+    
     int setup();
     void printParameters();
 
@@ -36,6 +37,7 @@ public:
     void printSensorsData(SensorData data);
     msgType updatePacket();
     void clearSensorData();
+
     // Class destructor
     // ~LoRaE220Communication();
 

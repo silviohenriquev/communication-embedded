@@ -78,6 +78,7 @@ void LoRaE220Communication::_configure()
     
 }
 
+
 void LoRaE220Communication::printParameters(){
 	Serial.println("Parametros");
     Serial.println("----------------------------------------");

@@ -78,9 +78,7 @@ void LoRaE220Communication::_configure()
     
 }
 
-
 void LoRaE220Communication::printParameters(){
-	Serial.println("Parametros");
     Serial.println("----------------------------------------");
 
 	Serial.print(F("HEAD : "));  Serial.print(this->configuration.COMMAND, HEX);Serial.print(" ");Serial.print(this->configuration.STARTING_ADDRESS, HEX);Serial.print(" ");Serial.println(this->configuration.LENGHT, HEX);

@@ -6,6 +6,7 @@ LoRaE220Communication::LoRaE220Communication(byte txE220pin, byte rxE220pin, byt
     :_lora(txE220pin, rxE220pin, auxPin, m0Pin, m1Pin)
 {
 	this->_config.function = function;
+	pinMode(LED_BUILTIN, OUTPUT);
 }
 #endif
 #ifdef HARDWARE_SERIAL_SELECTABLE_PIN
@@ -82,6 +83,7 @@ void LoRaE220Communication::printParameters(){
     Serial.println("----------------------------------------");
 
 	Serial.print(F("HEAD : "));  Serial.print(this->configuration.COMMAND, HEX);Serial.print(" ");Serial.print(this->configuration.STARTING_ADDRESS, HEX);Serial.print(" ");Serial.println(this->configuration.LENGHT, HEX);
+	Serial.print(F("HEAD : "));  Serial.print(this->configuration.COMMAND);Serial.print(" ");Serial.print(this->configuration.STARTING_ADDRESS);Serial.print(" ");Serial.println(this->configuration.LENGHT);
 	Serial.println(F(" "));
 	Serial.print(F("AddH : "));  Serial.println(this->configuration.ADDH, HEX);
 	Serial.print(F("AddL : "));  Serial.println(this->configuration.ADDL, HEX);
@@ -103,6 +105,9 @@ void LoRaE220Communication::printParameters(){
 
 
 	Serial.println("----------------------------------------");
+	
+	
+
 }
 
 bool LoRaE220Communication::sendSensorsDataPacket(SensorData data){

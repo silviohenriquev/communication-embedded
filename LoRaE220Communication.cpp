@@ -210,8 +210,15 @@ void LoRaE220Communication::printSensorsData(SensorData data){
 }
 
 void LoRaE220Communication::blink(int time){
-	digitalWrite(LED_BUILTIN, HIGH);
-	delay(time/2);
-	digitalWrite(LED_BUILTIN, LOW);
-	delay(time/2);
+	#ifdef HARDWARE_SERIAL_SELECTABLE_PIN
+		digitalWrite(this->LED_BUILTIN, HIGH);
+		delay(time/2);
+		digitalWrite(this->LED_BUILTIN, LOW);
+	#endif
+
+	#ifdef HARDWARE_SERIAL_SELECTABLE_PIN
+		digitalWrite(LED_BUILTIN, HIGH);
+		delay(time/2);
+		digitalWrite(LED_BUILTIN, LOW);
+	#endif
 }

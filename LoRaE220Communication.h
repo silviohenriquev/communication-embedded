@@ -51,6 +51,8 @@ private:
 
     const float _calc = 100.0;
 
+    int LED_BUILTIN = 2;
+
     packetSensorsData _mSensorData;
     packetGeneric _rx;
 

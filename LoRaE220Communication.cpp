@@ -7,6 +7,7 @@ LoRaE220Communication::LoRaE220Communication(byte txE220pin, byte rxE220pin, byt
 {
 	this->_config.function = function;
 	pinMode(LED_BUILTIN, OUTPUT);
+	digitalWrite(LED_BUILTIN, HIGH);
 }
 #endif
 #ifdef HARDWARE_SERIAL_SELECTABLE_PIN
@@ -105,7 +106,20 @@ void LoRaE220Communication::printParameters(){
 
 
 	Serial.println("----------------------------------------");
-	
+	#ifdef ACTIVATE_SOFTWARE_SERIAL
+        if(this->configuration.COMMAND==193 && this->configuration.STARTING_ADDRESS==0 && this->configuration.LENGHT==8){
+			digitalWrite(LED_BUILTIN, LOW);
+		} else{
+			while (1)
+			{
+				digitalWrite(LED_BUILTIN, HIGH);
+				delay(300);
+				digitalWrite(LED_BUILTIN, LOW);
+				delay(300);
+			}
+			
+		}
+    #endif
 	
 
 }
@@ -193,4 +207,11 @@ void LoRaE220Communication::printSensorsData(SensorData data){
     Serial.print(':');
     Serial.print(this->_time.second(), DEC);
     Serial.println();
+}
+
+void LoRaE220Communication::blink(int time){
+	digitalWrite(LED_BUILTIN, HIGH);
+	delay(time/2);
+	digitalWrite(LED_BUILTIN, LOW);
+	delay(time/2);
 }

@@ -37,6 +37,7 @@ public:
     void printSensorsData(SensorData data);
     msgType updatePacket();
     void clearSensorData();
+    void blink(int time);
 
     // Class destructor
     // ~LoRaE220Communication();

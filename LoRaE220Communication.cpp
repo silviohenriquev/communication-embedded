@@ -109,6 +109,8 @@ void LoRaE220Communication::printParameters(){
 	#ifdef ACTIVATE_SOFTWARE_SERIAL
         if(this->configuration.COMMAND==193 && this->configuration.STARTING_ADDRESS==0 && this->configuration.LENGHT==8){
 			digitalWrite(LED_BUILTIN, LOW);
+			delay(1000);
+			digitalWrite(LED_BUILTIN, LOW);
 		} else{
 			while (1)
 			{
@@ -211,14 +213,14 @@ void LoRaE220Communication::printSensorsData(SensorData data){
 
 void LoRaE220Communication::blink(int time){
 	#ifdef HARDWARE_SERIAL_SELECTABLE_PIN
-		digitalWrite(this->LED_BUILTIN, HIGH);
-		delay(time/2);
-		digitalWrite(this->LED_BUILTIN, LOW);
+		digitalWrite(2, HIGH);
+		delay(time);
+		digitalWrite(2, LOW);
 	#endif
 
-	#ifdef HARDWARE_SERIAL_SELECTABLE_PIN
+	#ifdef ACTIVATE_SOFTWARE_SERIAL
 		digitalWrite(LED_BUILTIN, HIGH);
-		delay(time/2);
+		delay(time);
 		digitalWrite(LED_BUILTIN, LOW);
 	#endif
 }
